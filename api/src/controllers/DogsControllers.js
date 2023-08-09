@@ -6,21 +6,52 @@ const { getDataFromApi } = require("../utils/apiUtils");
 
 
 async function getDataApi(req, res) {
-  try {
-    const data = await getDataFromApi("/v1/breeds");
+  const { Name } = req.query;
 
-    res.status(200).json(data);
-  } catch (Error) {
-    console.error("error");
-    res.status(400).send("Error");
+  try {
+    if (Name !== undefined) {
+      const dbDog = await Dog.findOne({
+        where: {
+          name: Name,
+        },
+      });
+
+      if (dbDog) {
+        res.status(200).json(dbDog);
+      } else {
+        const apiRequestRaza = await getDataFromApi(`/v1/breeds/search?q=${Name}&`);
+        const data = apiRequestRaza;
+
+        const { id, name, height, weight, life_span, image } = data;
+        const dogger = {
+          id,   
+          name,    
+          image, 
+          weight,
+          height,
+          life_span,
+        };
+        res.status(200).json(data);
+      }
+    } else {
+      const apiRequestAllDogs = await getDataFromApi("/v1/breeds");
+      const allDogs = apiRequestAllDogs;
+
+      res.status(200).json(allDogs);
+    }
+  } catch (error) {
+    console.error(error); // Imprime el error en la consola para fines de depuración
+    res.status(500).send("Error en el servidor");
   }
 }
 
+
 async function getDogsById(req, res) {
   const idDog = req.params.id;
+ 
   try {
     if (Number(idDog) >= 1 && Number(idDog) <= 264) {
-      const dogsAllApi = await getDataFromApi("/v1/breeds");
+      const dogsAllApi = await getDataFromApi("/v1/breeds/");
 
       const dogRaceApi = dogsAllApi.find((dog) => {
         return dog.id === parseInt(idDog);
@@ -51,31 +82,8 @@ async function getDogsById(req, res) {
   }
 }
 
-async function getDogsByRaza(req, res) {
-  
-  // const idRaza  = req.params.id;
-    const {raza} = req.query;
-    try{
-        const apiRequestRaza = await getDataFromApi(`/v1/breeds/search?q=${raza}&`);
-       
-        const  data  = apiRequestRaza;
-      
-        const { id, name, height, weight, life_span, image } = data;
-    const dogger = {
-    id,   
-    name,    
-    image, 
-    weight,
-    height,
-    life_span,
-    };
-    res.status(200).json(data);
-        }catch (Error){
-            console.log('error');
-            res.status(400).send("Error")
-        }
-    
-}
+
+
 async function createdDog(req, res) {
   try {
     const { name, height, weight, temperaments, life_span, image } = req.body;
@@ -107,6 +115,5 @@ async function createdDog(req, res) {
 module.exports = {
   getDataApi,
   getDogsById,
-  getDogsByRaza,
   createdDog,
 };
