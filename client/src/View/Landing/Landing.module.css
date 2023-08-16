@@ -1,0 +1,93 @@
+.container{
+  height: 97vh;
+  display: flex;
+ justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/imageDogs/gettyimages-837898820-1-4deae142d4d0403dbb6cb542bfc56934.jpg");
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.formContainer{
+  width: 350px;
+  height: 450px;
+  flex-direction: column;
+  backdrop-filter: blur(1px);
+ background-color:transparent;
+  border: 2px solid gainsboro ;
+  border-radius: 20px;
+  padding: 30px 40px;
+  position: relative;
+  z-index: 2;
+}
+.image{
+  width: 350px;
+  height: 450px;
+  border: 2px solid gainsboro;
+  border-radius: 20px;
+  padding: 30px 40px;
+
+  top:0;
+  left: 0;
+  background-image:url("../../../public/imageDogs/gettyimages-837898820-1-4deae142d4d0403dbb6cb542bfc56934.jpg") ;
+  background-size: cover;
+  z-index: -1;
+}
+.h1{
+  font-size:35px ;
+  align-content: center ;
+}
+.input{
+  position: relative;
+  width: 100%;
+  height: 50px;
+
+  margin: 30px 0;
+}
+.input input{
+  width: 93%;
+  height: 93%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color:#fff;
+  padding: 0px 0px 0px 20px;
+}
+.input input::placeholder{
+  color: #fff
+}
+.input box-icon{
+  position: absolute;
+  right: 22px;
+  top:50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  transition: transform 0.5s;
+}
+
+
+.btn{
+  width: 40%;
+  height: 45px;
+  margin-top: 50px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  cursor:pointer;
+  font-size: 15px;
+  font-weight: 590;
+
+}
+.input box-icon:hover{
+  transform: translateY(-50%) scale(1.3);
+  color: wheat;
+}
+.Navbar{
+  position: absolute;
+}

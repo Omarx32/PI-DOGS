@@ -3,16 +3,21 @@ require("dotenv").config();
 
 const { API_KEY, URL} = process.env;
 
+const cleanArray = (arr)=>
+      arr.map((elem)=>{
+        return{
+      id: elem.id,
+      name: elem.name,
+      height: elem.height.metric,
+      weight: elem.weight.metric,
+      life_span: elem.life_span,
+      image: elem.image?.url? elem.image.url :`https://cdn2.thedogapi.com/images/${elem.reference_image_id}.jpg`,
+      temperament: elem.temperament?.name? elem.temperament.name : elem.temperament,
+    };
+  });
 
-async function getDataFromApi(prop){
-    try{
-        const response = await axios(`${URL}${prop}?api_key=${API_KEY}`);
-        return response.data;
-    }catch(error){
-        throw new Error('Error get data from API')
-    }
-}
-
+  
 module.exports = {
-    getDataFromApi,
+
+    cleanArray,
 }

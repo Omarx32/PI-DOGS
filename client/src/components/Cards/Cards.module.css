@@ -1,0 +1,10 @@
+.Container{
+    border: 15px solid black;
+    display:flex;
+    flex-direction: row;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+}

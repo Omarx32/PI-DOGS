@@ -1,0 +1,24 @@
+
+.container{
+   background-image: url("https://i.pinimg.com/736x/4c/66/11/4c6611cebb3c08b7c5b7ec5d10ee9404.jpg");
+    background-color:blue ;
+}
+.transparent-background {
+    background-color: transparent;
+  }
+
+  .container_filters{
+    width: 190%;
+    margin-top: 1.3rem;
+    border-radius: 25px;
+}
+
+.container_filters select{
+    padding: 0.5rem 0.9rem;
+    border: none;
+    box-shadow: 5px 5px 5px 0.5px rgba(0,0,0,0.4);
+    background-color: #25b687;
+    color: white;
+
+    cursor: pointer;
+}

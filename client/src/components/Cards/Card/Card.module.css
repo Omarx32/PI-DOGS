@@ -1,0 +1,39 @@
+.Card {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: #ffff;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 7px 7px 20px #bebebe, -7px -7px 20px #ffffff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-small;
+    overflow: hidden; /* Asegura que el contenido se mantenga dentro del marco */
+    left: 30px;
+  }
+  
+  .img {
+    width: 98%;
+    height: auto; /* Para que la imagen no se estire */
+    display: block;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .img:hover{
+    transform: rotate()
+  }
+  
+  .Card article {
+    
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  

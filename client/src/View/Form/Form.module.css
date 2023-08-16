@@ -1,0 +1,399 @@
+.containerGeneralForm {
+    padding-top: 120px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+    background-image: url("https://i.pinimg.com/736x/4c/66/11/4c6611cebb3c08b7c5b7ec5d10ee9404.jpg");
+  }
+  
+  .containerForm {
+    border-radius: 30px;
+    margin-bottom: 2rem;
+    width: 600px;
+    height: 1150px;
+    padding: 30px;
+    box-shadow: 15px 15px 30px #9b9b9b, -15px -15px 30px #ffffff;
+    background-color: #26508b;
+    background-image: url("../../images/patitasform.png");
+    background-size: auto;
+  }
+  
+  .divValueDoble {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .titleForm {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    padding-bottom: 1rem;
+  }
+  
+  .divInputName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110px;
+    margin-bottom: 15px;
+  }
+  
+  .divInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110px;
+  }
+  
+  .divInputButtonCreate {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 130px;
+  }
+  
+  .inputForm {
+    font-size: 1rem;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #11223a;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .labelForm {
+    font-size: 1.25rem;
+    padding-bottom: 0.5rem;
+    color: white;
+  }
+  
+  .divInputTemperaments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    height: 110px;
+  }
+  
+  .selectTemperaments {
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #11223a;
+  }
+  
+  .divTemperamentsAdd {
+    width: 100%;
+    height: 160px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    margin-left: -15px;
+  }
+  
+  .divButtonTemperamentsAdd {
+    width: 140px;
+    height: 55px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: none;
+    color: #373435;
+    font-size: 0.9rem;
+    background-color: rgb(255, 213, 63);
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+  }
+  
+  .buttonTemperamentsAdd {
+    font-size: 1rem;
+    background-color: rgb(255, 213, 63);
+    border: none;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+  
+  .buttonTemperamentsAdd:hover {
+    font-weight: 600;
+    color: red;
+  }
+  
+  .pCreateImage {
+    padding-top: 0.5rem;
+    color: white;
+    font-size: 1.1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .buttonCreateImg {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    background-color: #11223a;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+  }
+  
+  .buttonCreateImg:hover {
+    color: #1fa74a;
+    background-color: rgb(71, 76, 179);
+  }
+  
+  .buttonSubmit {
+    margin-top: 1.5rem;
+    margin-left: 370px;
+    font-weight: 600;
+    background-color: rgb(255, 213, 63);
+    /* box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff; */
+    padding: 0.2rem;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    color: #373435;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .buttonSubmit:hover {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    background-color: rgb(218, 243, 29);
+  }
+  
+  .errors {
+    font-size: 13px;
+    color: red;
+    text-align: center;
+  }
+  
+  /* Para pantallas pequeñas (hasta 576px) */
+  @media (max-width: 576px) {
+    .containerGeneralForm {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .containerForm {
+      width: 340px;
+      height: 1200px;
+      padding: 20px;
+      padding-top: 30px;
+    }
+  
+    .labelForm {
+      font-size: 0.9rem;
+      padding-bottom: 0.5rem;
+      color: white;
+    }
+  
+    .titleForm {
+      font-size: 1.5rem;
+    }
+  
+    .divInputName {
+      height: 100px;
+    }
+  
+    .divInput {
+      height: 110px;
+    }
+  
+    .divTemperamentsAdd {
+      height: 220px;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+  
+    .divButtonTemperamentsAdd {
+      font-size: 0.8rem;
+      width: 120px;
+      height: 55px;
+    }
+  
+    .divInputButtonCreate {
+      height: 150px;
+    }
+  
+    .pCreateImage {
+      font-size: 0.9rem;
+    }
+  
+    .buttonSubmit {
+      margin-top: 2rem;
+      margin-left: 190px;
+      width: 110px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Para pantallas medianas (de 577px a 768px) */
+  @media (min-width: 577px) and (max-width: 768px) {
+    .containerGeneralForm {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .containerForm {
+      width: 450px;
+      height: 1210px;
+    }
+  
+    .labelForm {
+      font-size: 1rem;
+      padding-bottom: 0.5rem;
+      color: white;
+    }
+  
+    .titleForm {
+      font-size: 1.75rem;
+    }
+  
+    .divInputName {
+      height: 100px;
+    }
+  
+    .divInput {
+      height: 110px;
+    }
+  
+    .divTemperamentsAdd {
+      height: 220px;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+  
+    .divButtonTemperamentsAdd {
+      font-size: 0.8rem;
+    }
+  
+    .divInputButtonCreate {
+      height: 150px;
+    }
+  
+    .pCreateImage {
+      font-size: 1rem;
+    }
+  
+    .buttonSubmit {
+      margin-top: 3rem;
+      margin-left: 270px;
+      width: 120px;
+      height: 40px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Para pantallas grandes (de 769px a 992px) */
+  @media (min-width: 769px) and (max-width: 992px) {
+    .containerGeneralForm {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  /* Para pantallas extra grandes (de 993px a 1200px) */
+  @media (min-width: 993px) and (max-width: 1200px) {
+    .containerForm {
+      width: 450px;
+      height: 1210px;
+    }
+  
+    .labelForm {
+      font-size: 1rem;
+      padding-bottom: 0.5rem;
+      color: white;
+    }
+  
+    .titleForm {
+      font-size: 1.75rem;
+    }
+  
+    .divInputName {
+      height: 100px;
+    }
+  
+    .divInput {
+      height: 110px;
+    }
+  
+    .divTemperamentsAdd {
+      height: 220px;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+  
+    .divButtonTemperamentsAdd {
+      font-size: 0.8rem;
+    }
+  
+    .divInputButtonCreate {
+      height: 150px;
+    }
+  
+    .pCreateImage {
+      font-size: 1rem;
+    }
+  
+    .buttonSubmit {
+      margin-top: 3rem;
+      margin-left: 270px;
+      width: 120px;
+      height: 40px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Para pantallas muy grandes (de 1201px a 1400px) */
+  @media (min-width: 1201px) and (max-width: 1400px) {
+    .divInputName {
+      height: 110px;
+    }
+  
+    .divInput {
+      height: 120px;
+    }
+  
+    .containerForm {
+      width: 550px;
+      height: 1250px;
+    }
+  
+    .divInputButtonCreate {
+      height: 170px;
+    }
+  
+    .buttonSubmit {
+      margin-top: 0rem;
+      margin-left: 320px;
+    }
+  }

@@ -1,111 +1,76 @@
 const axios = require("axios");
 require("dotenv").config();
 const { Op } = require('sequelize');
-const { Dog, Temperaments } = require("../db");
-const { getDataFromApi } = require("../utils/apiUtils");
+const { Dog, Temperament } = require("../db");
+const { cleanArray } = require("../utils/apiUtils");
+const { API_KEY, URL } = process.env;
 
 
-async function getDataApi(req, res) {
-  const { Name } = req.query;
 
-  try {
-    if (Name !== undefined) {
-      const dbDog = await Dog.findOne({
-        where: {
-          name: Name,
+async function getDogsBId(id, source) {
+  const dog = source === "api" 
+    ? (await axios.get(`https://api.thedogapi.com/v1/breeds/${id}`))
+    : await Dog.findByPk(id, {
+      include: {
+        model: Temperament,
+        attributes: ["name"],
+        through: {
+          attributes: [],
         },
-      });
-
-      if (dbDog) {
-        res.status(200).json(dbDog);
-      } else {
-        const apiRequestRaza = await getDataFromApi(`/v1/breeds/search?q=${Name}&`);
-        const data = apiRequestRaza;
-
-        const { id, name, height, weight, life_span, image } = data;
-        const dogger = {
-          id,   
-          name,    
-          image, 
-          weight,
-          height,
-          life_span,
-        };
-        res.status(200).json(data);
-      }
-    } else {
-      const apiRequestAllDogs = await getDataFromApi("/v1/breeds");
-      const allDogs = apiRequestAllDogs;
-
-      res.status(200).json(allDogs);
-    }
-  } catch (error) {
-    console.error(error); // Imprime el error en la consola para fines de depuración
-    res.status(500).send("Error en el servidor");
-  }
+      },
+    });
+  return dog;
 }
 
+async function getAllDogs() {
+  // get all from api & db
+  const dbDogs = await Dog.findAll();
 
-async function getDogsById(req, res) {
-  const idDog = req.params.id;
- 
-  try {
-    if (Number(idDog) >= 1 && Number(idDog) <= 264) {
-      const dogsAllApi = await getDataFromApi("/v1/breeds/");
+  const apiDogsRaw = (
+    await axios.get(`${URL}?api_key=${API_KEY}`)
+  ).data
 
-      const dogRaceApi = dogsAllApi.find((dog) => {
-        return dog.id === parseInt(idDog);
-      });
+  const apiDogs = cleanArray(apiDogsRaw);
 
-      if(!dogRaceApi) throw new Error("Not matches found");
-      
-      return res.status(200).json(dogRaceApi)
-    }else{
-        const dogsRaceDb = await Dog.findByPk(idDog, {
-          include: {
-            model: Temperaments,
-            attributes: ["name"],
-            through: {
-              attributes: [],
-            },
-          },
-        });
-  
-        if (!dogsRaceDb) throw new Error("Not matches found");
-  
-        return res.status(200).json(dogsRaceDb); 
-      }
-    
-  } catch (Error) {
-    console.log("error");
-    res.status(400).send("Error");
-  }
+  return [...dbDogs, ...apiDogs];
 }
 
+async function searchDog(name) {
+  const dbDogs = await Dog.findAll({
+    where: { name }
+  })
 
+  const apiDogsRaw = (
+    await axios.get(`${URL}search?q=${name}&api_key=${API_KEY}`)
+  ).data
+  const apiDogs = cleanArray(apiDogsRaw);
+
+  return [...dbDogs, ...apiDogs];
+}
 
 async function createdDog(req, res) {
   try {
-    const { name, height, weight, temperaments, life_span, image } = req.body;
-    if (!name || !height || !weight || !life_span || !temperaments)
+    const { name, heightMin, heightMax, weightMin, weightMax, temperament, life_spanMin,life_spanMax, image  } = req.body;
+    if (!name || !heightMin||!heightMax ||!weightMin|| !weightMax || !life_spanMin || !life_spanMax || !temperament)
       throw new Error("Missing required data");
 
     const newDog = {
       name,
-      height,
-      weight,
-      life_span,
+      height:`${heightMin}-${heightMax} cm`,
+      weight:`${weightMin}-${weightMax} kg`,
+      life_span:`${life_spanMin}-${life_spanMax} years`,
+      temperament,
       image,
     };
 
     const createNewDog = await Dog.create(newDog);
 
-    const findTemp = await Temperaments.findAll({
-      where: { name: temperaments },
+    const findTemp = await Temperament.findAll({
+      where: { name: temperament },
     });
     createNewDog.addTemperament(findTemp);
 
-    res.status(201).json(createNewDog);
+    res.status(201).json("Created Succes");
   } catch (error) {
     console.error("Error, the dog cannot be created", error);
     res.status(500).json({ error: "There's a error" });
@@ -113,7 +78,8 @@ async function createdDog(req, res) {
 }
 
 module.exports = {
-  getDataApi,
-  getDogsById,
+  getDogsBId,
   createdDog,
+  searchDog,
+  getAllDogs,
 };

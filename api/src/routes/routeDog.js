@@ -1,14 +1,14 @@
-const  express  = require('express');
+const express = require('express');
 const dogRoutes = express.Router();
-const { getDataApi, getDogsById, createdDog, } = require('../controllers/DogsControllers')
-
+const { createdDog, } = require('../controllers/DogsControllers')
+const { getDogId, getDogs } = require("../handlers/dogsHandler")
 dogRoutes.use(express.json());
 
 
-
+dogRoutes.get("/:id", getDogId)
 dogRoutes.post("/", createdDog)
-dogRoutes.get("/", getDataApi)
-dogRoutes.get("/:id", getDogsById)
+dogRoutes.get("/", getDogs)
+
 
 
 module.exports = dogRoutes;

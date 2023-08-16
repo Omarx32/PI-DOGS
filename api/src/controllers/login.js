@@ -1,5 +1,6 @@
 const allowedUsers = require("../utils/allowedUsers");
-const { User } = require("../DB_connection");
+
+const { User } = require("../db");
 const { Op } = require("sequelize");
 
 function login(req, res) {
@@ -12,5 +13,7 @@ function login(req, res) {
     }
   });
 
-  return res.json({ access }); 
+  return res.json({ access });
 }
+
+module.exports = login;

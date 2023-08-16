@@ -1,8 +1,8 @@
-const  express  = require('express');
+const express = require('express');
 const tempRoutes = express.Router();
 
 
-const {getAllTemperaments} = require('../controllers/TempControllers')
+const { getAllTemperaments } = require('../controllers/TempControllers')
 
 tempRoutes.get("/", getAllTemperaments)
 
