@@ -98,8 +98,7 @@
   }
   
   .divItemsTemperaments {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 1.5rem;
     text-align: center;
     height: 100px;
@@ -107,6 +106,7 @@
   }
   
   .itemTemperament {
+    display: flex;
     width: 140px;
     height: 60px;
     display: flex;
@@ -124,25 +124,7 @@
     box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
   }
   
-  .divErrorsDetail {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  
-  .imgErrors {
-    height: 550px;
-  }
-  
-  .textError {
-    padding-top: 3rem;
-    font-size: 3rem;
-    color: #11223a;
-  }
-  
-  .pError {
-    font-size: 3rem;
-    color: #11223a;
-  }
+
   
   /* Para pantallas pequeñas (hasta 576px) */
   @media (max-width: 576px) {
@@ -197,38 +179,7 @@
       grid-template-columns: repeat(2, 1fr);
     }
   
-    .divErrorsDetail {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .buttonDetail {
-      margin-left: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  
-    .imgErrors {
-      margin-top: 4rem;
-      height: 350px;
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-  
-    .textError {
-      padding-top: 0rem;
-      padding-left: 1rem;
-      font-size: 2rem;
-    }
-  
-    .pError {
-      padding-left: 1rem;
-      padding-right: 1rem;
-      font-size: 1.5rem;
-    }
-  
-    .divErrorsDetail {
-      height: 71vh;
-    }
+ 
   }
   
   /* Para pantallas medianas (de 577px a 768px) */
@@ -369,27 +320,7 @@
       margin-left: 1.5rem;
     }
   
-    .imgErrors {
-      margin-top: 4rem;
-      height: 400px;
-      margin-left: 20px;
-    }
-  
-    .textError {
-      padding-left: 2rem;
-      padding-top: 7rem;
-      font-size: 2rem;
-    }
-  
-    .pError {
-      padding-left: 2rem;
-      font-size: 1.5rem;
-    }
-  
-    .divErrorsDetail {
-      height: 71vh;
-    }
-  }
+
   
   /* Para pantallas extra grandes (de 993px a 1200px) */
   @media (min-width: 993px) and (max-width: 1200px) {
@@ -430,41 +361,6 @@
       width: 120px;
     }
   
-    .imgErrors {
-      height: 500px;
-      margin-left: 30px;
-    }
-  
-    .textError {
-      padding-left: 2rem;
-      padding-top: 3rem;
-      font-size: 2.5rem;
-    }
-  
-    .pError {
-      padding-left: 2rem;
-      font-size: 2rem;
-    }
   }
   
-  /* Para pantallas muy grandes (de 1201px a 1400px) */
-  @media (min-width: 1201px) and (max-width: 1400px) {
-    .divImageDetail img {
-      height: 460px;
-      margin-right: 20px;
-    }
-  
-    .imgErrors {
-      height: 570px;
-    }
-  
-    .textError {
-      padding-top: 3rem;
-      font-size: 2.5rem;
-    }
-  
-    .pError {
-      font-size: 2.5rem;
-    }
-  }
-  
+}

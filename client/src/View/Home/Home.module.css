@@ -11,6 +11,8 @@
     width: 190%;
     margin-top: 1.3rem;
     border-radius: 25px;
+    display: flex;
+    
 }
 
 .container_filters select{
@@ -21,4 +23,13 @@
     color: white;
 
     cursor: pointer;
+}
+.container_filters select:first-child{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.container_filters select:last-child{
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }

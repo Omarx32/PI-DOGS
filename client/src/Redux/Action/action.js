@@ -10,6 +10,7 @@ export const ON_SEARCH = "ON_SEARCH"
 export const PAGE_PAGINATED = "PAGE_PAGINATED"
 export const  FILTER_SELECT = "FILTER_SELECT"
 export const ORDER_BY_NAME = "ORDER_BY_NAME"
+export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT"
 export const getDogs = () => {
     return async function (dispatch) {
         const apiData = await axios.get(
@@ -104,12 +105,21 @@ export const getCreateImage = () => {
   }
 
   export const filterSelect = (payload) =>{
-    return { type: FILTER_SELECT, payload}
+    return { 
+      type: FILTER_SELECT,
+      payload,
+    }
   }
   
   export const OrderByName = (payload) => {
     return{
       type: ORDER_BY_NAME,
+      payload
+    }
+  }
+  export const OrderByWeight = (payload) => {
+    return{
+      type: ORDER_BY_WEIGHT,
       payload
     }
   }

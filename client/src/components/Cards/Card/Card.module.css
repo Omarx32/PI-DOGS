@@ -1,8 +1,8 @@
 .Card {
     position: relative;
     width: 400px;
-    height: 400px;
-    background-color: #ffff;
+    height: 360px;
+    background-color: transparent;
     border-radius: 8px;
     margin: 10px;
     box-shadow: 7px 7px 20px #bebebe, -7px -7px 20px #ffffff;
@@ -10,12 +10,15 @@
     font-size: x-small;
     overflow: hidden; /* Asegura que el contenido se mantenga dentro del marco */
     left: 30px;
+    transition: transform 0.5s ease, scale 0.5s ease;
   }
   
   .img {
-    width: 98%;
+    width: 310px;
     height: auto; /* Para que la imagen no se estire */
     display: block;
+   
+    justify-content: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
@@ -36,4 +39,6 @@
     width: 100%;
     box-sizing: border-box;
   }
-  
+  .Card:hover{
+    transform: scale(1.2);
+  }

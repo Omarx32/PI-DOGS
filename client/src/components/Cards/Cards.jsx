@@ -23,6 +23,7 @@ const CardsContainer = () => {
 
 
 
+
   return (
     <div>
       <div className={style.Container}>
@@ -49,6 +50,7 @@ const CardsContainer = () => {
       </div>
     </div>
   );
+ 
 };
 // crear un estado local 
 export default CardsContainer;

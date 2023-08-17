@@ -74,10 +74,7 @@ const {
                     </div>
                   ) : (
                     <div className={style.divItemsTemperaments}>
-                      <p className={style.itemTemperament}>{temperament}</p>
-                      <p className={style.itemTemperament}></p>
-                      <p className={style.itemTemperament}></p>
-                      <p className={style.itemTemperament}></p>
+                      <p className={style.itemTemperament}>{temperament}</p>                   
                     </div>
                   )}
                 </div>

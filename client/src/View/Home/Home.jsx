@@ -1,6 +1,6 @@
 import CardsContainer from "../../components/Cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import {OrderByName, filterSelect, getDogs, getTemperaments} from '../../Redux/Action/action'
+import {OrderByName, filterSelect, getDogs, getTemperaments, OrderByWeight} from '../../Redux/Action/action'
 import SearchBar from '../../components/SearchBar/SearchBar'
 import style from './Home.module.css'
 import { useEffect, useState } from "react";
@@ -9,7 +9,9 @@ const Home = ( ) => {
     const dispatch = useDispatch();
     const dogs = useSelector((state)=> state.dogs)
    
-    const allTemperament = useSelector((state)=> state.temperament)
+  let allTemperament = useSelector((state)=> state.temperament)
+  
+   
     const [orden, setOrden] = useState("");
 
     useEffect(()=>{
@@ -25,6 +27,11 @@ const Home = ( ) => {
         e.preventDefault();    
         dispatch(filterSelect(e.target.value));
       };
+      const handleOrderByWeight = (e) =>{
+        e.preventDefault();
+        dispatch(OrderByWeight(e.target.value))
+        setOrden(`Ordenado${e.target.value}`)
+      }
     
 
     return(
@@ -38,12 +45,23 @@ const Home = ( ) => {
                 <option value="A-Z">A-Z</option>
                 <option value="Z-A">Z-A</option>
               </select>
+
+              <select onChange={handleOrderByWeight}>
+                <option disabled selected defaultValue>
+                  Filter by weight
+                </option>
+                <option value="max_weight">Max</option>
+                <option value="min_weight">Min</option>
+              </select>
+
               <select onChange={handleFilterByTemperament}>
                   <option disabled selected defaultValue>Temperaments</option>
                   <option value="Todos">All</option>
+                 
                   {
                     allTemperament?.map(temp => (
-                        <option value={temp.name}  key={temp.id}>{temp.name}</option>
+                      
+                        <option value={temp.name}  key={temp.id}> {temp.name}</option>
                     ))
                   }
               </select>
